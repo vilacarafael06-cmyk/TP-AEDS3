@@ -17,40 +17,34 @@ public class Principal {
                 System.out.println("3 - Jogos");
                 System.out.println("4 - Compras");
                 System.out.println("5 - Busca por Preço (Índice)");
-                System.out.println("6 - Pesquisar por padrão (KMP / BM)");
+                System.out.println("6 - Compressão");
                 System.out.println("0 - Sair");
 
                 System.out.print("\nOpção: ");
-                try {
-                    opcao = Integer.parseInt(console.nextLine());
-                } catch (NumberFormatException e) {
-                    opcao = -1;
+                try { 
+                    opcao = Integer.parseInt(console.nextLine()); 
+                } catch (NumberFormatException e) { 
+                    opcao = -1; 
                 }
 
                 switch (opcao) {
                     case 1:
-                        MenuClientes menuClientes = new MenuClientes(console);
-                        menuClientes.menu();
+                        new MenuClientes(console).menu();
                         break;
                     case 2:
-                        MenuBiblioteca menuBiblioteca = new MenuBiblioteca(console);
-                        menuBiblioteca.menu();
+                        new MenuBiblioteca(console).menu();
                         break;
                     case 3:
-                        MenuJogos menuJogos = new MenuJogos(console);
-                        menuJogos.menu();
+                        new MenuJogos(console).menu();
                         break;
                     case 4:
-                        MenuCompras menuCompras = new MenuCompras(console);
-                        menuCompras.menu();
+                        new MenuCompras(console).menu();
                         break;
                     case 5:
-                        MenuBuscaPreco menuBuscaPreco = new MenuBuscaPreco(console);
-                        menuBuscaPreco.menu();
+                        new MenuBuscaPreco(console).menu();
                         break;
                     case 6:
-                        MenuPesquisaPadrao menuPesquisa = new MenuPesquisaPadrao(console);
-                        menuPesquisa.menu();
+                        new MenuCompressao(console).menu();
                         break;
                     case 0:
                         System.out.println("Saindo...");
@@ -59,6 +53,7 @@ public class Principal {
                         System.out.println("Opção inválida!");
                         break;
                 }
+
             } while (opcao != 0);
 
         } catch (Exception e) {
