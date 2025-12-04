@@ -17,7 +17,8 @@ public class Principal {
                 System.out.println("3 - Jogos");
                 System.out.println("4 - Compras");
                 System.out.println("5 - Busca por Preço (Índice)");
-                System.out.println("6 - Compressão");
+                System.out.println("6 - Compressão (LZW/Huffman)");
+                System.out.println("7 - Pesquisar por padrão (KMP / BM)");
                 System.out.println("0 - Sair");
 
                 System.out.print("\nOpção: ");
@@ -45,6 +46,10 @@ public class Principal {
                         break;
                     case 6:
                         new MenuCompressao(console).menu();
+                        break;
+                    case 7:
+                        MenuPesquisaPadrao menuPesquisa = new MenuPesquisaPadrao(console);
+                        menuPesquisa.menu();
                         break;
                     case 0:
                         System.out.println("Saindo...");
