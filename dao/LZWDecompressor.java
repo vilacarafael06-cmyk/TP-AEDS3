@@ -50,7 +50,6 @@ public class LZWDecompressor {
                 // caso normal
                 entry = dict.get(curCode);
             } else if (curCode == nextCode) {
-                // caso especial: KwKwK (W + primeira letra de W)
                 // monta entry = prevEntry + firstByte(prevEntry)
                 entry = concat(prevEntry, prevEntry[0]);
             } else {
@@ -60,7 +59,7 @@ public class LZWDecompressor {
             // escreve entrada ao output
             out.write(entry);
 
-            // adiciona nova entrada ao dicionário: prevEntry + primeiro byte de entry
+            // adiciona nova entrada ao dicionário
             if (nextCode < MAX_DICT_SIZE) {
                 byte firstByte = entry[0];
                 dict.add(concat(prevEntry, firstByte));
@@ -81,14 +80,10 @@ public class LZWDecompressor {
         return res;
     }
 
-    /**
-     * BitInputStream lê bits MSB-first do InputStream.
-     * readBits(n) retorna Integer (0..(2^n-1)) ou null se não houver bits suficientes (final).
-     */
     static class BitInputStream implements Closeable {
         private final InputStream in;
-        private int buffer; // armazena bits lidos mas ainda não consumidos (à direita os menos significativos)
-        private int nbits;  // quantos bits válidos estão em 'buffer' (0..7..16..)
+        private int buffer; // armazena bits lidos mas ainda não consumidos 
+        private int nbits;  // quantos bits válidos estão em 'buffer'
 
         public BitInputStream(InputStream in) {
             this.in = in;
